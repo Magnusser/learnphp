@@ -1,39 +1,20 @@
 <?php
 
-class ConsoleLogger implements Logger{
-    public function log($message){
-        echo "$message\n";
+class Box {
+    public function __construct(){
+        echo "Box was createddd\n";
+    }
+    public function __call($spell, $args){
+
+    }
+    public function __set($spell, $name){
+        var_dump($spell, $name);
+    }
+    public function __destruct(){
+        echo "Box aws destryed\n";
     }
 }
 
-class Task {
-    public function work($logger){
-        for($i=0;$i<10;$i++){
-            $logger->log($i);
-        }
-    }
-}
 
-class NothingLogger implements Logger{
-    public function log($message){
-
-    }
-}
-
-class FileLogger implements Logger{
-    public function log($message){
-        $file = fopen('log.txt', 'a');
-        fwrite($file, "$message\n");
-        fclose($file);
-    }
-}
-
-interface Logger {
-    public function 
-}
-
-$logger = new FileLogger();
-$task = new Task();
-$task->work();
-
-?>
+$box = new Box();
+$box->spell = 'Wish';
