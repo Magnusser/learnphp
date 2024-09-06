@@ -11,9 +11,17 @@ class Box {
 }
 
 class MetalBox extends Box {
+    use HasMatrerial;
     public $weightPerUnit = 10;
     public function weight(){
         return $this->volume() * $this->weightPerUnit;
+    }
+}
+
+trait HasMatrerial {
+    public $material;
+    public function getMaterial() {
+        return $this->material;
     }
 }
 
