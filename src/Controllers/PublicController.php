@@ -32,7 +32,7 @@ class PublicController {
         include 'views/tech.php';  
     }
     public function form(){
-        dump($_GET, $_POST);
+        //dump($_GET, $_POST);
         $fname = $_GET['fname'] ?? null;
         include 'views/form.php';  
     }
