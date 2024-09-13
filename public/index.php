@@ -6,20 +6,28 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif)$/', $_SERVER["REQUEST_URI"])) {
 
 function dump(...$vars){
     echo '<pre>';
-    var_dump($_SERVER);
+    var_dump(...$vars);
     echo '</pre>';   
 }
 
 spl_autoload_register(function($class){
     $class = substr($class, 4);
-    dump($class);
     require_once "src/$class.php";
 });
 
 require 'routes.php';
 
-$router = new App\Router($_SERVER['REQUEST_URI']);
+$router = new App\Router($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 $match = $router->match();
 if($match){
-    call_user_func($match['action']);
+    if(is_callable($match->action)) {
+        call_user_func($match->action);
+    } else if (is_array($match->action) && count($match->action) === 2){
+        	$class = $match->action[0];
+            $controller = new $class();
+            $method = $match->action[1];
+            $controller->$method();
+    }
+} else {
+    echo 'ERROR 404!';
 }
