@@ -1,18 +1,32 @@
 <?php
+
 namespace App\Controllers;
 
-class PublicController {
-    public function index(){
-        $posts = [
-            ['title' => 'Some title 1', 'body' => 'Some body 1'],
-            ['title' => 'Some title 2', 'body' => 'Some body 2'],
-            ['title' => 'Some title 3', 'body' => 'Some body 3'],
-            ['title' => 'Some title 4', 'body' => 'Some body 4'],
-        ];
-        include 'views/index.php';
-    }
+use App\DB;
+use App\Models\Post;
+use App\Models\User;
 
-    public function us(){
+class PublicController
+{
+    public function index(){
+        $posts = Post::all();
+        dump($posts);
+        $users = User::all();
+        dump($users);
+        $post = Post::find(2);
+        dump($post);
+    }
+        //        $posts = [
+        //            ['title' => 'Some title 1', 'body' => 'Some body 1'],
+        //            ['title' => 'Some title 2', 'body' => 'Some body 2'],
+        //            ['title' => 'Some title 3', 'body' => 'Some body 3'],
+        //            ['title' => 'Some title 4', 'body' => 'Some body 4'],
+        //        ];
+        //        include 'views/index.php';
+
+
+    public function us()
+    {
         $posts = [
             ['title' => 'Some US title 1', 'body' => 'Some US body 1'],
             ['title' => 'Some US title 2', 'body' => 'Some US body 2'],
@@ -22,22 +36,25 @@ class PublicController {
         include 'views/us.php';
     }
 
-    public function tech(){
+    public function tech()
+    {
         $posts = [
             ['title' => 'Some Tech title 1', 'body' => 'Some Tech body 1'],
             ['title' => 'Some Tech title 2', 'body' => 'Some Tech body 2'],
             ['title' => 'Some Tech title 3', 'body' => 'Some Tech body 3'],
             ['title' => 'Some Tech title 4', 'body' => 'Some Tech body 4'],
         ];
-        include 'views/tech.php';  
+        include 'views/tech.php';
     }
-    public function form(){
+    public function form()
+    {
         //dump($_GET, $_POST);
         $fname = $_GET['fname'] ?? null;
-        include 'views/form.php';  
+        include 'views/form.php';
     }
 
-    public function answer(){
+    public function answer()
+    {
         echo $_POST['fname'];
     }
 }
