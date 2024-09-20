@@ -14,6 +14,6 @@ class Model {
 
     public static function find($id){
         $db = new DB();
-        return $db->all(static::$table, static::class, $id);
+        return $db->find(static::$table, static::class, $id);
     }
 }
