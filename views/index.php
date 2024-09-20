@@ -7,7 +7,7 @@
 
   <div class="row g-5">
     <div class="col-md-8">
-    <?php include 'partials/post.php'; ?>
+    <?php include 'partials/posts.php'; ?>
 
     <div class="col-md-4">
     <?php include 'partials/side.php'; ?>

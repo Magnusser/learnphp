@@ -15,6 +15,8 @@ class PublicController
         dump($users);
         $post = Post::find(2);
         dump($post);
+
+        include 'views/index.php';
     }
         //        $posts = [
         //            ['title' => 'Some title 1', 'body' => 'Some body 1'],

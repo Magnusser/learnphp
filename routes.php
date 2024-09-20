@@ -1,4 +1,6 @@
 <?php
+
+use App\Controllers\PostsController;
 use App\Route;
 use App\Controllers\PublicController;
 
@@ -7,3 +9,4 @@ Route::get('/us', [PublicController::class, 'us']);
 Route::get('/tech', [PublicController::class, 'tech']);
 Route::get('/form', [PublicController::class, 'form']);
 Route::post('/form', [PublicController::class, 'answer']);
+Route::post('/admin/posts', [PostsController::class, 'index']);
