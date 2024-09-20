@@ -14,4 +14,20 @@ class PostsController
     public function create(){
         include 'views/posts/create.php';
     }
+
+    public function store(){
+        $post = new Post();
+        $post->title = $_POST['title'];
+        $post->body = $_POST['body'];
+        $post->save();
+        header('Location: /admin/posts');
+    }
+
+    public function destroy(){
+        $post = Post::find($_GET['id']);
+        if($post){
+            $post->delete();
+        }
+        header('Location: /admin/posts');
+    }
 }

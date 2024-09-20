@@ -17,7 +17,7 @@
                         <div class="btn-group" role="group" aria-label="Basic mixed styles blahh" >
                             <button type="button" class="btn btn-danger">View</button>
                             <button type="button" class="btn btn-warning">Edit</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-danger" href="/admin/posts/delete?id=<?=$post->id?>">Delete</button>
                         </div>
                     </td>
                 </tr>
