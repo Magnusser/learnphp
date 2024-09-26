@@ -10,7 +10,6 @@ class PublicController
 {
     public function index()
     {
-        
         $posts = Post::all();
         view('index', compact('posts'));
         //view('index', ['posts' => $posts]);
