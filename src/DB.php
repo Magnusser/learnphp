@@ -11,7 +11,7 @@ class DB
     public function __construct()
     {
         try {
-            $this->conn = new PDO('sqlite:db.sqlite');
+            $this->conn = new PDO('sqlite:'. __DIR__ . '/../db.sqlite');
             // set the PDO error mode to exception
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
@@ -42,13 +42,16 @@ class DB
         $fieldNames = array_keys($fields);
         $fieldNamesText = implode(', ', $fieldNames);
         $fieldValuesText = implode("', '", $fields);
-        $sql = "INSERT INTO $table (firstname, lastname, email) VALUES ('John', 'Doe', 'john@example.com')";
+        $sql = "INSERT INTO $table ($fieldNamesText) 
+                VALUES ('$fieldValuesText')";
+        // use exec() because no results are returned
         $this->conn->exec($sql);
     }
 
-    public function delete()
-    {
-        $sql = "DELETE FROM MyGuests WHERE id=3";
+    public function delete($table, $id){
+        $sql = "DELETE FROM $table WHERE id=$id";
+
+        // use exec() because no results are returned
         $this->conn->exec($sql);
     }
 }
