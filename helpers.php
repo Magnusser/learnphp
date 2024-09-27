@@ -1,15 +1,6 @@
 <?php
 
-function dump(...$vars){
-    echo '<pre>';
-    var_dump(...$vars);
-    echo '</pre>';
-}
-
-function dd(...$vars){
-    dump(...$vars);
-    die;
-}
+use App\Models\User;
 
 function view($viewName, $vars=[]){
     extract($vars);
@@ -18,4 +9,14 @@ function view($viewName, $vars=[]){
 
 function redirect($path){
     header("Location: $path");
+}
+
+function auth(){
+    if(isset($_SESSION['userId'])){
+        $user = User::find($_SESSION['userId']);
+        if($user){
+            return $user;
+        }
+    }
+    return false;
 }

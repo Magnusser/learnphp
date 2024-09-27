@@ -6,7 +6,7 @@
             <?= $_SESSION['error'] ?>
         </div>
     <?php endif; ?>
-    <form method="POST" action="/register">
+    <form method="POST" action="/login">
         <div class="mb-3">
             <label for="email" class="form-label">email</label>
             <input name="email" type="text" class="form-control" id="email">
@@ -15,12 +15,7 @@
             <label for="password" class="form-label">password</label>
             <input name="password" type="password" class="form-control" id="password">
         </div>
-        <div class="mb-3">
-            <label for="password_confirm" class="form-label">password confurm</label>
-            <input name="password_confirm" type="password" class="form-control" id="password_confirm">
-        </div>
-        <div class="mb-3">
-            <input type="submit" class="btn btn-primary" value="Registerraa!!">
+        <input type="submit" class="btn btn-primary" value="Rogin">
         </div>
     </form>
 </main>
